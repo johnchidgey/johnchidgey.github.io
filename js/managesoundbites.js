@@ -4,6 +4,7 @@
 var podcastList = [];
 const localImportDirectoryPath = '/Users/johnchidgey/Documents/sites/engineered/static/soundbiteimport/';
 const localImportURLPath = '/soundbiteimport/';
+const webSocketPort = 5001;
 
 window.Soundbite = window.Soundbite || {};
 
@@ -75,9 +76,10 @@ Soundbite.Bot = (function ($) {
 		if (connection == null || connection.readyState == 3) {
 			// Connect to the server and await feedback.
       if (window.location.hostname == 'localhost' || window.location.hostname == '') {
-          connection = new WebSocket('ws://localhost:5001');
+        connection = new WebSocket('ws://localhost:' + webSocketPort);
       } else {
-        connection = new WebSocket('wss://bot.engineered.network/botsocket');
+//        connection = new WebSocket('wss://soundbitten.herokuapp.com');
+				connection = new WebSocket('wss://ws.techdistortion.com:' + webSocketPort);
       }
 
 			connection.onopen = function (event) {
@@ -87,6 +89,7 @@ Soundbite.Bot = (function ($) {
 			connection.onmessage = function (message) {
 				var packet = JSON.parse(message.data);
         if (packet.operation == 'REFRESH') {
+					console.log(packet.soundbites);
             var mysoundbites = packet.soundbites;
 						mysoundbites.forEach((podcast, index) => {
 							podcastList.push({title:podcast.title, folder:podcast.folder, url:podcast.url, episodes:podcast.episodes});
@@ -101,7 +104,7 @@ Soundbite.Bot = (function ($) {
 				$('.tables').fadeOut(function () {
           $('.message').fadeIn();
         });
-        setTimeout(connectSocket, 5001);
+        setTimeout(connectSocket, 5000);
         clearInterval(ping);
 			};
 
@@ -109,7 +112,7 @@ Soundbite.Bot = (function ($) {
 				console.log("Error: " + JSON.stringify(error));
 			};
 		} else {
-			setTimeout(connectSocket, 5001);
+			setTimeout(connectSocket, 5000);
 		}
 	}
 
