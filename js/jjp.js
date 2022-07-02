@@ -1,5 +1,13 @@
-/*! jjp.js - v0.0.1 - 2022-05-28
-* John's jPlayer */
+/*! jjp.js
+ *
+ * John's jPlayer v0.1 - Soundbite NodeJS Server Demo Application
+ *
+ * 3 July, 2022 - John Chidgey
+ *
+ * Additional functionality for the jPlayer WebPlayer
+ * Developed specifically for Soundbite functionality
+ */
+
 // TBD: Rules check all scenarios for logic - Set Start, End, Duration, all combinations and limits
 /* DATA FORMAT
 "startTime" : "1234.5",

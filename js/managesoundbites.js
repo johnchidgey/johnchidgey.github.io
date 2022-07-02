@@ -1,3 +1,11 @@
+/*! managesoundbites.js
+ *
+ * Manage Soundbites v0.1 - Soundbite Client Demo Application
+ *
+ * 3 July, 2022 - John Chidgey
+ *
+ * Developed specifically for Soundbite functionality
+ */
 
 'use strict';
 
