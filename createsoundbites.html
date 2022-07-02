@@ -1,0 +1,123 @@
+<html>
+<head>
+  <title>Create Soundbites</title>
+  <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
+  <link href="/css/jPlayer.css" rel="stylesheet" type="text/css" />
+  <link href="/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+  <link href="/css/prettify-jPlayer.css" rel="stylesheet" type="text/css" />
+  <link href="/css/jjp.css" rel="stylesheet" type="text/css" />
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.jplayer.js"></script>
+  <script type="text/javascript" src="/js/jquery-ui.js"></script>
+  <script type="text/javascript" src="/js/FileSaver.js"></script>
+  <script type="text/javascript" src="/js/jjp.js"></script>
+</head>
+<body>
+<div style="margin:5px;">
+<h1>Create Soundbites</h1>
+<hr>
+<div>
+  <div style="">
+    <form id="jp-podcast-selector" style="font-family:sans-serif; font-size:0.75em;">
+      <select id="jp-podcast-feeds" name="Select Podcast">
+      </select>
+    </form>
+  </div>
+  <div style="padding:0.75em 0em;"><input style="font-size:0.75em; padding:2px 6px; width:100%; font-family:sans-serif;" type="text" placeholder="Podcast RSS Feed URL" id="jp-podcastfeed"></div>
+  <div>
+    <div id="jp-checkfeed" class="jjp-button" style="float:left; padding:0em 0.5em; border:1px solid #999; border-radius:4px; font-family:sans-serif; font-size:0.75em;">Check Feed</div>
+    <div id="jp-loadingfeed" style="float:left; padding:0em 0.5em; font-family:sans-serif; font-size:0.75em;"></div>
+    <form id="jp-episode-selector" style="">
+      <select id="jp-episode-options" name="Select Episode" style="float:left; padding:0em 0.5em; border:1px solid #999; border-radius:4px; margin:0em 1em; font-family:sans-serif; font-size:0.75em;">
+        <option value="">Select an episode</option>
+      </select>
+    </form>
+    <div id="jp-loadfile" class="jjp-button" style="float:left; padding:0em 0.5em; border:1px solid #999; border-radius:4px; font-family:sans-serif; font-size:0.75em;">Load Episode</div>
+    <div id="jp-loadingfile" style="float:left; padding:0em 0.5em; font-family:sans-serif; font-size:0.75em;"></div>
+  </div>
+</div>
+<br><hr><br>
+<div class="row">
+  <div class="col-md-12">
+    <div id="jquery-jplayer-0" class="jp-jplayer"></div>
+    <div id="jp-container-0">
+      <div class="jp-gui ui-widget ui-widget-content ui-corner-all">
+        <ul>
+          <li class="jp-play ui-state-default ui-corner-all"><a href="javascript:;" class="jp-play ui-icon ui-icon-play" tabindex="1" title="play">play</a></li>
+          <li class="jp-pause ui-state-default ui-corner-all"><a href="javascript:;" class="jp-pause ui-icon ui-icon-pause" tabindex="1" title="pause">pause</a></li>
+          <li class="jp-stop ui-state-default ui-corner-all"><a href="javascript:;" class="jp-stop ui-icon ui-icon-stop" tabindex="1" title="stop">stop</a></li>
+          <li class="jp-repeat ui-state-default ui-corner-all"><a href="javascript:;" class="jp-repeat ui-icon ui-icon-refresh" tabindex="1" title="repeat">repeat</a></li>
+          <li class="jp-repeat-off ui-state-default ui-state-active ui-corner-all"><a href="javascript:;" class="jp-repeat-off ui-icon ui-icon-refresh" tabindex="1" title="repeat off">repeat off</a></li>
+          <li class="jp-mute ui-state-default ui-corner-all"><a href="javascript:;" class="jp-mute ui-icon ui-icon-volume-off" tabindex="1" title="mute">mute</a></li>
+          <li class="jp-unmute ui-state-default ui-state-active ui-corner-all"><a href="javascript:;" class="jp-unmute ui-icon ui-icon-volume-off" tabindex="1" title="unmute">unmute</a></li>
+          <li class="jp-volume-max ui-state-default ui-corner-all"><a href="javascript:;" class="jp-volume-max ui-icon ui-icon-volume-on" tabindex="1" title="max volume">max volume</a></li>
+          <li class="jp-seek-prev ui-state-default ui-corner-all"><a href="javascript:;" class="jp-seek-prev ui-icon ui-icon-seek-prev" tabindex="1" title="Seek 5s Back" id="jp-seek-prev-0">seek-prev</a></li>
+          <li class="jp-seek-next ui-state-default ui-corner-all"><a href="javascript:;" class="jp-seek-next ui-icon ui-icon-seek-next" tabindex="1" title="Seek 5s Forward" id="jp-seek-next-0">seek-next</a></li>
+        </ul>
+        <div class="jp-progress-slider"></div>
+        <div class="jp-volume-slider"></div>
+        <div class="jp-current-time"></div>
+        <div class="jp-duration"></div>
+        <div class="jp-clearboth"></div>
+        <div class="jp-no-solution">
+          <span>Update Required</span>
+          To play the media you will need to either update your browser to a recent version or update your <a href="https://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+        </div>
+      </div>
+    </div>
+    <br>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div id="jp-soundbite1-container-0">
+      <div id="jp-setstarttime-0" class="jjp-button" style="float:left; padding:0em 0.5em; border:1px solid #999; border-radius:4px; font-family:sans-serif; font-size:0.75em;">Set Start Time:</div><div><form id="jp-starttime-selected-form-0"><input style="float:left; font-size:0.75em; padding:0px 6px; margin:0px 4px; border-radius:4px; font-family:sans-serif; width:70px; text-align:center;" type="text" placeholder="00:00:00" id="jp-starttime-selected-0"></form></div>
+      <div id="jp-setendtime-0" class="jjp-button" style="float:left; padding:0em 0.5em; border:1px solid #999; border-radius:4px; font-family:sans-serif; font-size:0.75em;">Set End Time:</div><div><form id="jp-endtime-selected-form-0"><input style="float:left; font-size:0.75em; padding:0px 6px; margin:0px 4px; border-radius:4px; font-family:sans-serif; width:70px; text-align:center;" type="text" placeholder="00:00:00" id="jp-endtime-selected-0"></form></div>
+      <div id="jp-setduration-0" style="float:left; padding:0em 0.5em; margin:1px; font-family:sans-serif; font-size:0.75em;">Duration:</div><div><form id="jp-duration-selected-form-0"><input style="float:left; font-size:0.75em; padding:0px 6px; margin:0px 4px; border-radius:4px; font-family:sans-serif; width:40px; text-align:right;" type="text" placeholder="0" id="jp-duration-selected-0"></form></div>
+      <div id="jp-testsoundbite-0" class="jjp-button" style="float:left; padding:0em 0.5em; border:1px solid #999; border-radius:4px; font-family:sans-serif; font-size:0.75em;">Test Soundbite</div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div style="padding-top:1em;">
+      <div id="jp-settitle-0" style="float:left; padding:0em 0.5em; margin:1px; font-family:sans-serif; font-size:0.75em;">Soundbite Title:</div><div><input style="float:left; font-size:0.75em; padding:0px 6px; margin:0px 4px; width:35%; border-radius:4px; font-family:sans-serif;" type="text" placeholder="Soundbite title..." id="jp-title-selected-0"></div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-md-12">
+      <div id="jp-setname-0" style="float:left; padding:0em 0.5em; margin:1px; font-family:sans-serif; font-size:0.75em;">Soundbiter's Name:</div><div><input style="float:left; font-size:0.75em; padding:0px 6px; margin:0px 4px; border-radius:4px; font-family:sans-serif;" type="text" placeholder="Johnny Soundbiter" id="jp-name-selected-0"></div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div style="padding-top:1em;">
+      <div style="">
+        <form id="jp-settype" style="">
+          <select id="jp-type-options-0" name="Select Value Type" style="float:left; padding:0em 0.5em; border:1px solid #999; border-radius:4px; margin:0em 1em; font-family:sans-serif; font-size:0.75em;">
+            <option value="Lightning">Lightning</option>
+          </select>
+        </form>
+      </div>
+    <div id="jp-setaddress-0" style="float:left; padding:0em 0.5em; margin:1px; font-family:sans-serif; font-size:0.75em;">Node Address:</div><div><input style="float:left; font-size:0.75em; padding:0px 6px; margin:0px 4px; width:40%; border-radius:4px; font-family:sans-serif;" type="text" placeholder="02ec5c61cff2be8207851d909b72c15ec27d16d5aeeecf74b9170cb1f8ee6e0d64" id="jp-address-selected-0"></div>
+  </div>
+  </div>
+</div>
+<hr>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div>
+      <div id="jp-submitviaemail" class="jjp-button" style="float:left; padding:0em 0.5em; border:1px solid #999; border-radius:4px; font-family:sans-serif; font-size:0.75em;" hidden>Submit via EMail</div>
+      <div id="jp-submitviafile" class="jjp-button" style="float:left; padding:0em 0.5em; border:1px solid #999; border-radius:4px; margin:0em 1em; font-family:sans-serif; font-size:0.75em;">Submit via File</div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+</div>
+</body>
+</html>
