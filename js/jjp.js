@@ -107,6 +107,9 @@ function appendPodcastList(podcastName) {
   podcastSelector.appendChild(podcastOption);
 }
 
+function ignoreSoundbiteChanged() {
+//  console.log("");
+}
 
 $(document).ready(function () {
   if((window.location.pathname == "/createsoundbite/") || (window.location.pathname == "/createsoundbites.html")) { // MODIFIED
@@ -643,7 +646,8 @@ $(document).ready(function () {
             enclosureSoundbites = item.querySelector("soundbites") ? item.querySelector("soundbites").getAttribute("enclosure") : "";
             enclosureFeed = item.querySelector("enclosure") ? item.querySelector("enclosure").getAttribute("url") : "";
             enclosure = enclosureSoundbites ? enclosureSoundbites : enclosureFeed; // Use the URL in the Soundbite tag, if present
-            if ((episode != "") && (soundbitesOpen))
+            allEpisodes = document.getElementById("ignore-soundbite-open").checked; // If All Listed Episodes is checked then always load episodes irrespective
+            if ((episode != "") && (soundbitesOpen || allEpisodes))
             items.push({'episode':episode, 'title':title, 'enclosure':enclosure, 'soundbites':soundbitesOpen});
           });
           var select = document.getElementById("jp-episode-options");
